@@ -3,19 +3,22 @@ package shared
 abstract class AocTools(day: Int) {
   private val inputGetter = new InputGetter(2024)
 
-  def inputLines: List[String] = inputGetter.get(day).toList
+  def inputLines: Seq[String] = inputGetter.get(day)
 
   def inputBlocks(separator: String = "\n\n"): Seq[String] = inputBlob.split(separator).toVector
 
   def inputBlockLines(blockSeparator: String = "\n\n"): Seq[Seq[String]] = inputBlocks(blockSeparator).map(_.split("\n").toVector)
 
-  def inputLineInts: Seq[Int] = inputLines.flatMap(_.split(",").map(_.toInt)).toVector
+  def inputLineInts(separator: String = ","): Seq[Seq[Int]] = inputLines.map(parseInts(_, separator)).toVector
 
-  def inputInts: List[Int] = inputLines.map(_.toInt)
+  def inputInts: Seq[Int] = inputLines.map(_.toInt)
 
   def inputBlob = inputLines.mkString("\n")
 
   def inputGrid: Seq[Seq[Char]] = inputLines.toVector.map(_.toVector)
+
+  def parseInts(line: String, sep: String = ","): Seq[Int] = line.split(sep).map(_.toInt).toVector
+  def parseIntLines(lines: Seq[String], sep: String = ","): Seq[Seq[Int]] = lines.map(parseInts(_, sep))
 
   def gcd(a: Long, b: Long): Long = if (b == 0) a else gcd(b, a % b)
   def lcm(a: Long, b: Long): Long = (a * b) / gcd(a,b)
