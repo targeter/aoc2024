@@ -2,3 +2,4 @@
 .idea
 target
 .env
+src/main/resources/day*.txt
