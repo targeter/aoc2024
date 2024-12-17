@@ -12,3 +12,4 @@ libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.10.6"
 libraryDependencies += "org.scala-graph" %% "graph-core" % "2.0.2"
 libraryDependencies += "com.beachape" %% "enumeratum" % "1.7.5"
+libraryDependencies += "org.fusesource.jansi" % "jansi" % "1.18"
